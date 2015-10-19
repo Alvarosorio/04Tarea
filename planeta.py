@@ -5,7 +5,9 @@ import numpy as np
 
 class Planeta(object):
     '''
-    Complete el docstring.
+    clase Planeta, la cual tiene como metodos su respectiva ec. de movimiento
+    ademas distintas metodos de resolver estas, considerando un ajuste derivado
+    de la relatividad de Einstein
     '''
 
     def __init__(self, condicion_inicial, alpha=0):
@@ -18,9 +20,14 @@ class Planeta(object):
         >> print(mercurio.alpha)
         >> 0.
         '''
+
         self.y_actual = condicion_inicial
-        self.t_actual = 0.0
+        self.t_actual = 0.
         self.alpha = alpha
+
+        x, y, vx, vy = self.y_actual
+        r = np.sqrt(x**2 + y**2)
+        #self.energia_actual = 0.5*(vx**2 + vy**2) - 1/r + self.alpha * 1/r**2
 
     def ecuacion_de_movimiento(self, x, y):
         '''
@@ -88,6 +95,7 @@ class Planeta(object):
         Similar a avanza_euler, pero usando Verlet.
         '''
 
+
         [x, y, vx, vy] = self.y_actual
         vx, vy, ax, ay = self.ecuacion_de_movimiento(x, y)
 
@@ -108,4 +116,12 @@ class Planeta(object):
         '''
         Calcula la enérgía total del sistema en las condiciones actuales.
         '''
-        pass
+
+        x, y, vx, vy = self.y_actual
+        vx, vy, ax, ay = self.ecuacion_de_movimiento(x, y)
+
+        r = np.sqrt(x**2+y**2)
+
+        #asumiendo G = 1, M = 1 y m = 1, de la misma forma como antes
+        e = ((vx**2 + vy**2) * (0.5)) - 1/r + (self.alpha / (r**2))
+        return e
