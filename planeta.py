@@ -88,8 +88,6 @@ class Planeta(object):
         Similar a avanza_euler, pero usando Verlet.
         '''
 
-        #Usamos rk4 para sacar un punto intermedio
-
         [x, y, vx, vy] = self.y_actual
         vx, vy, ax, ay = self.ecuacion_de_movimiento(x, y)
 
