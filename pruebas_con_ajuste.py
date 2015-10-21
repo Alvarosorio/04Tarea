@@ -2,7 +2,7 @@ from planeta import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-planeta_W = Planeta([10, 0, 0, 0.4], 10**(-2.786))
+planeta_W = Planeta([10, 0, 0, 0.4], 10**(-2.786)) # RUT 17.951.786-8
 
 pasos = 100000
 fin = 10000.0
@@ -27,15 +27,15 @@ fig = plt.figure()
 plt.plot(x_verlet, y_verlet, 'g')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title("orbita para el metodo de verlet con alfa = 10**(-2.786)")
+plt.title("Orbita para el Metodo de Verlet con correccion")
 plt.grid()
 
 fig = plt.figure()
 
 plt.plot(t, e_verlet, 'g')
-plt.xlabel('t')
-plt.ylabel('energia')
-plt.title("energia para el metodo de verlet")
+plt.xlabel('Tiempo')
+plt.ylabel('Energia')
+plt.title("Energia para el Metodo de Verlet")
 plt.grid()
 
 plt.show()

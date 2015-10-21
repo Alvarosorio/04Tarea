@@ -36,8 +36,8 @@ class Planeta(object):
         '''
 
         r = np.sqrt(x**2 + y**2)
-        ax = -(1/r**2 + self.alpha/r**3)*(x/r)   # asumimos M*G = 1
-        ay = -(1/r**2 + self.alpha/r**3)*(y/r)
+        ax = (-1/r**2 + (2*self.alpha/r**3))*(x/r)   # asumimos M*G = 1
+        ay = (-1/r**2 + (2*self.alpha/r**3))*(y/r)
 
         return [self.y_actual[2], self.y_actual[3], ax, ay]
 
